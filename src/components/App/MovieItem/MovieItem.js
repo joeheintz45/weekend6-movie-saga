@@ -13,7 +13,8 @@ class MovieItem extends Component {
         <li key={this.props.key}>
           <img src={this.props.item.poster} alt={this.props.item.title} />{' '}
           <br></br>
-          {this.props.item.title}
+          <h2>{this.props.item.title}</h2>
+          <p>{this.props.item.description}</p>
         </li>
       </div>
     );
