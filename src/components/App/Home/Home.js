@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import MovieItem from '../MovieItem/MovieItem';
 
 class Home extends Component {
   componentDidMount() {
@@ -7,7 +8,13 @@ class Home extends Component {
   }
 
   render() {
-    return <ul>{this.props.store.movies.map}</ul>;
+    return (
+      <ul>
+        {this.props.store.movies.map((item, index) => (
+          <MovieItem key={index} item={item} />
+        ))}
+      </ul>
+    );
   }
 }
 
