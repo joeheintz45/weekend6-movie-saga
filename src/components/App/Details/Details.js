@@ -13,8 +13,9 @@ class Details extends Component {
   render() {
     return (
       <div>
-        <h3>{this.props.store.itemReducer.title}</h3>
+        <h2>{this.props.store.itemReducer.title}</h2>
         <img src={this.props.store.itemReducer.poster} alt="Movie Poster" />
+        <br></br>
         {this.props.store.genres.map((item, index) => (
           <DetailsItem key={index} item={item} />
         ))}

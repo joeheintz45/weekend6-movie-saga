@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+import './DetailsItem.css';
 
 class DetailsItem extends Component {
   render() {
-    return <h4>{this.props.item.name}</h4>;
+    return (
+      <span>
+        <h3>{this.props.item.name}</h3>
+      </span>
+    );
   }
 }
 
