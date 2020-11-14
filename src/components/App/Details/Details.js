@@ -11,11 +11,15 @@ class Details extends Component {
   }
 
   render() {
-    const array = this.props.store.details.map((item, index) => (
-      <DetailsItem key={index} details={item} />
-    ));
-
-    return <ul>{array}</ul>;
+    return (
+      <div>
+        <h3>{this.props.store.itemReducer.title}</h3>
+        <img src={this.props.store.itemReducer.poster} alt="Movie Poster" />
+        {this.props.store.details.map((item, index) => (
+          <DetailsItem key={index} item={item} />
+        ))}
+      </div>
+    );
   }
 }
 

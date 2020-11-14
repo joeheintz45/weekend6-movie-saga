@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class DetailsItem extends Component {
   render() {
-    return <li>{this.props.details.name}</li>;
+    return <h4>{this.props.item.name}</h4>;
   }
 }
 
