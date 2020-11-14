@@ -1,9 +1,26 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import DetailsItem from '../DetailsItem/DetailsItem';
 
 class Details extends Component {
+  componentDidMount() {
+    this.props.dispatch({
+      type: 'GET_DETAILS',
+      payload: this.props.store.itemReducer.id,
+    });
+  }
+
   render() {
-    return <p>DETAILS</p>;
+    const array = this.props.store.details.map((item, index) => (
+      <DetailsItem key={index} details={item} />
+    ));
+
+    return <ul>{array}</ul>;
   }
 }
 
-export default Details;
+const mapStoreToProps = (store) => ({
+  store,
+});
+
+export default connect(mapStoreToProps)(Details);

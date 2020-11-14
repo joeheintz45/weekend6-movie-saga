@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 class MovieItem extends Component {
   handleClick = (event) => {
     this.props.history.push('/details');
+    this.props.dispatch({ type: 'ITEM_CALL', payload: this.props.item });
   };
 
   render() {
@@ -21,4 +22,4 @@ class MovieItem extends Component {
   }
 }
 
-export default withRouter(MovieItem);
+export default withRouter(connect()(MovieItem));

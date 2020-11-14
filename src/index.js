@@ -20,10 +20,10 @@ function* rootSaga() {
 
 function* getDetails(action) {
   try {
-    const response = yield axios.get(`/api/movie/${action.payload}`);
+    const response = yield axios.get(`/api/genre/${action.payload}`);
     console.log(response.data);
     yield put({
-      type: 'SET_MOVIES',
+      type: 'SET_DETAILS',
       payload: response.data,
     });
   } catch (err) {
@@ -76,12 +76,23 @@ const genres = (state = [], action) => {
   }
 };
 
+const itemReducer = (state = [], action) => {
+  switch (action.type) {
+    case 'ITEM_CALL':
+      console.log(action.payload);
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 // Create one store that all components can use
 const storeInstance = createStore(
   combineReducers({
     movies,
     genres,
     details,
+    itemReducer,
   }),
   // Add sagaMiddleware to our store
   applyMiddleware(sagaMiddleware, logger)
