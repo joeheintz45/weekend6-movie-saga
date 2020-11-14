@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.css';
+import { Col, Container, Row } from 'react-bootstrap';
 
 class MovieItem extends Component {
   handleClick = (event) => {
