@@ -19,4 +19,18 @@ router.get('/:id', (req, res) => {
     });
 });
 
+// Add query to get all genres
+router.get('/', (req, res) => {
+  const queryText = `SELECT * FROM "genres" ORDER BY "id" ASC`;
+  pool
+    .query(queryText)
+    .then((dbResponse) => {
+      res.send(dbResponse.rows);
+    })
+    .catch((err) => {
+      console.log('movie details could not be gathered', err);
+      res.sendStatus(500);
+    });
+});
+
 module.exports = router;

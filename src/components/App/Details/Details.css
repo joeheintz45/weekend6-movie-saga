@@ -1,0 +1,14 @@
+.image {
+  background-color: lightgray;
+  margin-left: 610px;
+  margin-right: 610px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-radius: 5px;
+}
+
+.description {
+  padding: 10px;
+  border: 1px solid lightgray;
+  border-radius: 20px;
+}

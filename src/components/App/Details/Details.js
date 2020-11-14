@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DetailsItem from '../DetailsItem/DetailsItem';
+import './Details.css';
 
 class Details extends Component {
   componentDidMount() {
     this.props.dispatch({
-      type: 'GET_GENRES',
+      type: 'GET_DETAILS',
       payload: this.props.store.itemReducer.id,
     });
   }
@@ -14,12 +15,16 @@ class Details extends Component {
     return (
       <div>
         <h2>{this.props.store.itemReducer.title}</h2>
-        <img src={this.props.store.itemReducer.poster} alt="Movie Poster" />
+        <div className="image">
+          <img src={this.props.store.itemReducer.poster} alt="Movie Poster" />
+        </div>
         <br></br>
-        {this.props.store.genres.map((item, index) => (
+        {this.props.store.details.map((item, index) => (
           <DetailsItem key={index} item={item} />
         ))}
-        <p>{this.props.store.itemReducer.description}</p>
+        <p className="description">
+          {this.props.store.itemReducer.description}
+        </p>
       </div>
     );
   }

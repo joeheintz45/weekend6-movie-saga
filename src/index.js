@@ -16,11 +16,25 @@ import axios from 'axios';
 function* rootSaga() {
   yield takeLatest('GET_MOVIE', getMovie);
   yield takeLatest('GET_GENRES', getGenres);
+  yield takeLatest('GET_DETAILS', getDetails);
 }
 
-function* getGenres(action) {
+function* getDetails(action) {
   try {
     const response = yield axios.get(`/api/genre/${action.payload}`);
+    console.log(response.data);
+    yield put({
+      type: 'SET_DETAILS',
+      payload: response.data,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+function* getGenres() {
+  try {
+    const response = yield axios.get('/api/genre');
     console.log(response.data);
     yield put({
       type: 'SET_GENRES',
@@ -67,6 +81,15 @@ const genres = (state = [], action) => {
   }
 };
 
+const details = (state = [], action) => {
+  switch (action.type) {
+    case 'SET_DETAILS':
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 const itemReducer = (state = {}, action) => {
   switch (action.type) {
     case 'ITEM_CALL':
@@ -82,6 +105,7 @@ const storeInstance = createStore(
   combineReducers({
     movies,
     genres,
+    details,
     itemReducer,
   }),
   // Add sagaMiddleware to our store

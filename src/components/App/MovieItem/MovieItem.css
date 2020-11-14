@@ -3,7 +3,12 @@
 }
 
 .background {
-  background-color: lightblue;
-  width: 200px;
-  padding-top: 10px;
+  background-color: lightgray;
+  width: 220px;
+  padding-top: 15px;
+  border-radius: 5px;
+}
+
+h5 {
+  padding: 5px;
 }
