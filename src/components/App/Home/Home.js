@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import MovieItem from '../MovieItem/MovieItem';
+import Navbar from '../Navbar/Navbar';
+import './Home.css';
 
 class Home extends Component {
   componentDidMount() {
@@ -9,10 +11,13 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="row">
-        {this.props.store.movies.map((item, index) => (
-          <MovieItem key={index} item={item} />
-        ))}
+      <div>
+        <Navbar />
+        <div className="row">
+          {this.props.store.movies.map((item, index) => (
+            <MovieItem key={index} item={item} />
+          ))}
+        </div>
       </div>
     );
   }

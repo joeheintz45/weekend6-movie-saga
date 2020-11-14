@@ -17,6 +17,7 @@ function* rootSaga() {
   yield takeLatest('GET_MOVIE', getMovie);
   yield takeLatest('GET_GENRES', getGenres);
   yield takeLatest('GET_DETAILS', getDetails);
+  yield takeLatest('POST_MOVIE', postMovie);
 }
 
 function* getDetails(action) {
@@ -32,13 +33,25 @@ function* getDetails(action) {
   }
 }
 
-function* getGenres() {
+function* getGenres(action) {
   try {
     const response = yield axios.get('/api/genre');
     console.log(response.data);
     yield put({
       type: 'SET_GENRES',
       payload: response.data,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+function* postMovie(action) {
+  try {
+    yield put({ type: 'ERROR_RESET' });
+    yield axios.post('/api/movie', action.payload);
+    yield put({
+      type: 'GET_MOVIE',
     });
   } catch (err) {
     console.log(err);

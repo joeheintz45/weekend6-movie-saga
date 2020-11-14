@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import AddMovieItem from '../AddMovieItem/AddMovieItem';
+import Navbar from '../Navbar/Navbar';
 import './AddMovie.css';
 
 class AddMovie extends Component {
@@ -8,7 +9,7 @@ class AddMovie extends Component {
     title: '',
     poster: '',
     description: '',
-    genre: '',
+    genre_id: '',
   };
 
   componentDidMount() {
@@ -17,19 +18,19 @@ class AddMovie extends Component {
 
   handleChangeFor = (propertyName) => (event) => {
     this.setState({
-      newBook: {
-        [propertyName]: event.target.value,
-      },
+      [propertyName]: event.target.value,
     });
   };
 
   handleSubmit = (event) => {
-    console.log(this.state);
+    this.props.dispatch({ type: 'POST_MOVIE', payload: this.state });
+    this.props.history.push('/');
   };
 
   render() {
     return (
       <div>
+        <Navbar />
         <input
           required
           onChange={this.handleChangeFor('title')}
@@ -51,7 +52,7 @@ class AddMovie extends Component {
         <label>Genre</label>
         <select
           required
-          onChange={this.handleChangeFor('genre')}
+          onChange={this.handleChangeFor('genre_id')}
           name="genre"
           placeholder="Genre"
         >
@@ -59,7 +60,7 @@ class AddMovie extends Component {
             <AddMovieItem key={index} item={item} />
           ))}
         </select>
-        <button onCLick={this.handleSubmit}>Submit</button>
+        <button onClick={this.handleSubmit}>Submit</button>
       </div>
     );
   }

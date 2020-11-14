@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DetailsItem from '../DetailsItem/DetailsItem';
+import Navbar from '../Navbar/Navbar';
 import './Details.css';
 
 class Details extends Component {
@@ -14,6 +15,7 @@ class Details extends Component {
   render() {
     return (
       <div>
+        <Navbar />
         <h2>{this.props.store.itemReducer.title}</h2>
         <div className="image">
           <img src={this.props.store.itemReducer.poster} alt="Movie Poster" />
