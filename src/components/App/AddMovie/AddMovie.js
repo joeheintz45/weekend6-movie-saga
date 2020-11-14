@@ -15,6 +15,14 @@ class AddMovie extends Component {
     this.props.dispatch({ type: 'GET_GENRES' });
   }
 
+  handleChangeFor = (propertyName) => (event) => {
+    this.setState({
+      newBook: {
+        [propertyName]: event.target.value,
+      },
+    });
+  };
+
   handleSubmit = (event) => {
     console.log(this.state);
   };
@@ -24,26 +32,26 @@ class AddMovie extends Component {
       <div>
         <input
           required
-          onChange={this.handleTitle}
+          onChange={this.handleChangeFor('title')}
           type="text"
           placeholder="Movie Title"
         ></input>
         <input
           required
-          onChange={this.handlePoster}
+          onChange={this.handleChangeFor('poster')}
           type="text"
           placeholder="Poster Link"
         ></input>
         <input
           required
-          onChange={this.handleDesc}
+          onChange={this.handleChangeFor('description')}
           type="text"
           placeholder="Description"
         ></input>
         <label>Genre</label>
         <select
           required
-          onChange={this.handleGenre}
+          onChange={this.handleChangeFor('genre')}
           name="genre"
           placeholder="Genre"
         >
