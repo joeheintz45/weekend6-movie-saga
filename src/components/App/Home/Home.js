@@ -9,11 +9,11 @@ class Home extends Component {
 
   render() {
     return (
-      <ul>
+      <div className="row">
         {this.props.store.movies.map((item, index) => (
           <MovieItem key={index} item={item} />
         ))}
-      </ul>
+      </div>
     );
   }
 }

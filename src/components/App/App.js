@@ -3,6 +3,7 @@ import { HashRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import Details from './Details/Details';
 import Home from './Home/Home';
+import 'bootstrap/dist/css/bootstrap.css';
 
 class App extends Component {
   // Renders the entire app on the DOM

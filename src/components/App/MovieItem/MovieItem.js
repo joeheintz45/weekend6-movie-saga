@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.css';
-import { Col, Container, Row } from 'react-bootstrap';
+import './MovieItem.css';
 
 class MovieItem extends Component {
   handleClick = (event) => {
@@ -12,13 +11,16 @@ class MovieItem extends Component {
 
   render() {
     return (
-      <div onClick={this.handleClick}>
-        <li key={this.props.key}>
+      <div
+        key={this.props.key}
+        onClick={this.handleClick}
+        className="col-2 spacer"
+      >
+        <div className="background">
           <img src={this.props.item.poster} alt={this.props.item.title} />{' '}
           <br></br>
-          <h2>{this.props.item.title}</h2>
-          <p>{this.props.item.description}</p>
-        </li>
+          <h5>{this.props.item.title}</h5>
+        </div>
       </div>
     );
   }
