@@ -1,4 +1,3 @@
-import { TextField } from 'material-ui';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import AddMovieItem from '../AddMovieItem/AddMovieItem';
