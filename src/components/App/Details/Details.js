@@ -12,6 +12,10 @@ class Details extends Component {
     });
   }
 
+  handleList = (event) => {
+    this.props.history.push('/');
+  };
+
   render() {
     return (
       <div>
@@ -27,6 +31,13 @@ class Details extends Component {
         <p className="description">
           {this.props.store.itemReducer.description}
         </p>
+        <button
+          type="button"
+          className="btn btn-secondary"
+          onClick={this.handleList}
+        >
+          Back To List
+        </button>
       </div>
     );
   }

@@ -1,3 +1,4 @@
+import { TextField } from 'material-ui';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import AddMovieItem from '../AddMovieItem/AddMovieItem';
@@ -27,40 +28,66 @@ class AddMovie extends Component {
     this.props.history.push('/');
   };
 
+  handleCancel = (event) => {
+    this.props.history.push('/');
+  };
+
   render() {
     return (
       <div>
         <Navbar />
-        <input
-          required
-          onChange={this.handleChangeFor('title')}
-          type="text"
-          placeholder="Movie Title"
-        ></input>
-        <input
-          required
-          onChange={this.handleChangeFor('poster')}
-          type="text"
-          placeholder="Poster Link"
-        ></input>
-        <input
-          required
-          onChange={this.handleChangeFor('description')}
-          type="text"
-          placeholder="Description"
-        ></input>
-        <label>Genre</label>
-        <select
-          required
-          onChange={this.handleChangeFor('genre_id')}
-          name="genre"
-          placeholder="Genre"
-        >
-          {this.props.store.genres.map((item, index) => (
-            <AddMovieItem key={index} item={item} />
-          ))}
-        </select>
-        <button onClick={this.handleSubmit}>Submit</button>
+        <div className="input">
+          <input
+            required
+            onChange={this.handleChangeFor('title')}
+            type="text"
+            placeholder="Title"
+          ></input>
+          <input
+            required
+            onChange={this.handleChangeFor('poster')}
+            type="text"
+            placeholder="Poster Link"
+          ></input>
+          <br></br>
+          <input
+            className="textbox form-control"
+            id="exampleFormControlTextarea1"
+            required
+            onChange={this.handleChangeFor('description')}
+            type="text"
+            placeholder="Description"
+          ></input>
+          <br></br>
+          <label>Genre:</label>
+          <br></br>
+          <select
+            required
+            onChange={this.handleChangeFor('genre_id')}
+            name="genre"
+            placeholder="Genre"
+          >
+            {this.props.store.genres.map((item, index) => (
+              <AddMovieItem key={index} item={item} />
+            ))}
+          </select>
+          <div>
+            <button
+              type="button"
+              class="btn btn-danger"
+              onClick={this.handleCancel}
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              class="btn btn-success"
+              onClick={this.handleSubmit}
+            >
+              Submit
+            </button>
+          </div>
+        </div>
       </div>
     );
   }

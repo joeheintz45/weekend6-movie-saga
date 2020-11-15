@@ -16,10 +16,14 @@ class MovieItem extends Component {
         onClick={this.handleClick}
         className="col-2 spacer"
       >
-        <div className="background">
-          <img src={this.props.item.poster} alt={this.props.item.title} />{' '}
+        <img
+          className="card-img-top"
+          src={this.props.item.poster}
+          alt={this.props.item.title}
+        />{' '}
+        <div className="background card">
           <br></br>
-          <h5>{this.props.item.title}</h5>
+          <h5 className="card-title">{this.props.item.title}</h5>
         </div>
       </div>
     );

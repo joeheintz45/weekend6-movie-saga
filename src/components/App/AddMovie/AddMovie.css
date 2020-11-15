@@ -3,5 +3,20 @@ input {
 }
 
 button {
-  margin: 20px;
+  margin-top: 20px;
+  margin-right: 5px;
+}
+
+.textbox {
+  width: 390px;
+  margin: auto;
+}
+
+.input {
+  border: 1px solid gray;
+  border-radius: 20px;
+  padding-bottom: 20px;
+  margin-top: 20px;
+  margin-left: 200px;
+  margin-right: 200px;
 }
