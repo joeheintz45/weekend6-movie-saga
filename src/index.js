@@ -20,6 +20,7 @@ function* rootSaga() {
   yield takeLatest('POST_MOVIE', postMovie);
 }
 
+// gets the specific genres for a movie with the id
 function* getDetails(action) {
   try {
     const response = yield axios.get(`/api/genre/${action.payload}`);
@@ -33,6 +34,7 @@ function* getDetails(action) {
   }
 }
 
+// gets all genres from the server for the dropdown
 function* getGenres(action) {
   try {
     const response = yield axios.get('/api/genre');
@@ -46,6 +48,7 @@ function* getGenres(action) {
   }
 }
 
+// posts the new movie to the server and gets the data back to be rendered with the updated data
 function* postMovie(action) {
   try {
     yield put({ type: 'ERROR_RESET' });
@@ -58,6 +61,7 @@ function* postMovie(action) {
   }
 }
 
+// gets all movies to be rendered on the page
 function* getMovie(action) {
   try {
     const response = yield axios.get('/api/movie');
@@ -94,6 +98,7 @@ const genres = (state = [], action) => {
   }
 };
 
+// used to store the specific genres of the clicked movie
 const details = (state = [], action) => {
   switch (action.type) {
     case 'SET_DETAILS':
@@ -103,6 +108,7 @@ const details = (state = [], action) => {
   }
 };
 
+// used to store the movie data of selected movie
 const itemReducer = (state = {}, action) => {
   switch (action.type) {
     case 'ITEM_CALL':

@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import './MovieItem.css';
 
 class MovieItem extends Component {
+  // calls reducer to get the data specific to the movie and sends user to details page
   handleClick = (event) => {
     this.props.history.push('/details');
     this.props.dispatch({ type: 'ITEM_CALL', payload: this.props.item });

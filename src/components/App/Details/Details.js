@@ -5,6 +5,7 @@ import Navbar from '../Navbar/Navbar';
 import './Details.css';
 
 class Details extends Component {
+  // mounts the get for the assigned genres of the movie selected
   componentDidMount() {
     this.props.dispatch({
       type: 'GET_DETAILS',
@@ -12,6 +13,7 @@ class Details extends Component {
     });
   }
 
+  // takes user back to movie list
   handleList = (event) => {
     this.props.history.push('/');
   };
@@ -25,6 +27,7 @@ class Details extends Component {
           <img src={this.props.store.itemReducer.poster} alt="Movie Poster" />
         </div>
         <br></br>
+        {/* maps through the genres associated with the specific movie */}
         {this.props.store.details.map((item, index) => (
           <DetailsItem key={index} item={item} />
         ))}
@@ -43,6 +46,7 @@ class Details extends Component {
   }
 }
 
+// store of all data in reducers
 const mapStoreToProps = (store) => ({
   store,
 });

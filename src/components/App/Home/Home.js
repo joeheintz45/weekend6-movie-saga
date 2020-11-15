@@ -5,6 +5,7 @@ import Navbar from '../Navbar/Navbar';
 import './Home.css';
 
 class Home extends Component {
+  // mounts the get of all the movies in the database
   componentDidMount() {
     this.props.dispatch({ type: 'GET_MOVIE' });
   }
@@ -14,6 +15,7 @@ class Home extends Component {
       <div className="pagecolor">
         <Navbar />
         <div className="row">
+          {/* maps through all th emovies to be rendered */}
           {this.props.store.movies.map((item, index) => (
             <MovieItem key={index} item={item} />
           ))}
@@ -23,6 +25,7 @@ class Home extends Component {
   }
 }
 
+// store of all data in the reducers
 const mapStoreToProps = (store) => ({
   store,
 });

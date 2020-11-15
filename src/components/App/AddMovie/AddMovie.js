@@ -13,21 +13,25 @@ class AddMovie extends Component {
     genre_id: '',
   };
 
+  // mounts the get for all of the genres in the dropdown
   componentDidMount() {
     this.props.dispatch({ type: 'GET_GENRES' });
   }
 
+  // changes the state to the input values
   handleChangeFor = (propertyName) => (event) => {
     this.setState({
       [propertyName]: event.target.value,
     });
   };
 
+  // submits the new state to be posted to the server and takes user back to movie list
   handleSubmit = (event) => {
     this.props.dispatch({ type: 'POST_MOVIE', payload: this.state });
     this.props.history.push('/');
   };
 
+  // takes user back to movie list without submitting movie
   handleCancel = (event) => {
     this.props.history.push('/');
   };
@@ -67,6 +71,7 @@ class AddMovie extends Component {
             name="genre"
             placeholder="Genre"
           >
+            {/* maps through the genres in the database and puts them in the dropdown */}
             {this.props.store.genres.map((item, index) => (
               <AddMovieItem key={index} item={item} />
             ))}
@@ -93,6 +98,7 @@ class AddMovie extends Component {
   }
 }
 
+// store of all the reducers values
 const mapStoreToProps = (store) => ({
   store,
 });

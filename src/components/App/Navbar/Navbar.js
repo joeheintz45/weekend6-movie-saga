@@ -3,11 +3,14 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import './Navbar.css';
 
+// navbar to navigate the pages
 class Navbar extends Component {
+  // takes user to add movie page
   addClick = (event) => {
     this.props.history.push('/add');
   };
 
+  // takes user to the movie list page
   homeClick = (event) => {
     this.props.history.push('/');
   };
